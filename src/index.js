@@ -13,7 +13,7 @@ app.use(cors({origin:'*',methods:['GET','POST','DELETE','UPDATE','PUT','PUT','PA
 
 app.use(express.json());
 app.use("/api",userRouter);
-app.use("/api",getUsers);
+app.use("/getusers",userRouter);
 dotenv.config();
 const port=process.env.PORT ? process.env.PORT:3000;
 app.listen(port,()=>{
