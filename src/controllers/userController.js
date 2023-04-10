@@ -42,5 +42,22 @@ class userController{
         }
     }
 
+    ///get one users
+
+    static async getUser(req,res) {
+        try {
+       const users=await User.findOne();
+       res.status(200).json({
+        "status":"success",
+        "data":users
+       })
+        }catch (error){
+            res.status(404).json({
+              "status":"error",
+              "message":error.message
+            });
+        }
+    }
+
 }
 export default userController
