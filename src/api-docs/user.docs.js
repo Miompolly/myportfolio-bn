@@ -48,10 +48,37 @@ const createUser = {
     } 
 }
 
+///get users
+
+
+
+
+const getUsers = {
+    tags : ["Users"],
+    description : "To get  Users",
+   
+    responses : {
+        200 : {
+            description : "OK",
+            content : {
+                "Application/json" : {
+                    schema : {
+                        type : "object"
+                    }
+                }
+            }
+        }
+    } 
+}
+
+
 
 const userRouteDoc = {
     "/api/user/createUser": {
-        post : createUser
+        post : createUser    
+    },
+    "/api/user/getUsers": {
+        get : getUsers    
     }
 };
 export default userRouteDoc;
