@@ -3,7 +3,8 @@
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 var _db = _interopRequireDefault(require("./database/db"));
 var _mongoose = _interopRequireDefault(require("mongoose"));
-var _user = _interopRequireDefault(require("./routes/user.route"));
+var _swagger = _interopRequireDefault(require("./api-docs/swagger"));
+var _indexRouter = _interopRequireDefault(require("./routes/indexRouter"));
 var express = require("express");
 var path = require("path");
 var cors = require("cors");
@@ -14,9 +15,9 @@ app.use(cors({
   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PUT', 'PATCH']
 }));
 app.use(express.json());
-app.use("/api", _user["default"]);
-app.use("/getusers", _user["default"]);
+app.use("/api", _indexRouter["default"]);
 dotenv.config();
+(0, _swagger["default"])(app);
 var port = process.env.PORT ? process.env.PORT : 3000;
 app.listen(port, function () {
   console.log("App is listening on port : ".concat(port));

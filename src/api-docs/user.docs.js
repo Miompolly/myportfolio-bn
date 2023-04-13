@@ -3,7 +3,7 @@ const createUser = {
     description : "Create user",
     requestBody : {
         content : {
-            "Application/json" : {
+            "multipart/form-data" : {
                 schema : {
                     type : "object",
                     properties : {
@@ -27,7 +27,18 @@ const createUser = {
                             description : "Password",
                             example : "User123"
                            
+                        },
+
+                        profileImage:{
+                           type : "array",
+                           items : {
+                            type : "string",
+                            format : "binary",
+                            required :true,
+                            minItems :1
+                           }
                         }
+         
 
                     }
                 }
@@ -71,6 +82,52 @@ const getUsers = {
     } 
 }
 
+///getuser
+
+const getUser = {
+    tags : ["Users"],
+    description : "To get  User",
+
+    parameters :[
+        {
+           name : "id",
+           in : " path",
+           description :"User Id",
+           type : "string",
+           example : "643003974919a0c5cb54b793"
+
+        }
+       
+    ] ,
+    responses : {
+        200 : {
+            description : "OK",
+            content : {
+                "Application/json" : {
+                    schema : {
+                        type:"object",
+                        example:{
+                            _id: "643003974919a0c5cb54b793",
+                            fname: "Joel",
+                            lname: "Minani",
+                            email: "jojo@gmail.com",
+                            password: "test123",
+                            profileImage :"gdgdgdggdgd",
+                            role :"user",
+                            createdAt: "2023-04-07T11:51:32.424Z",
+                            updatedAt: "2023-04-07T11:51:32.424Z",
+                            __v: 0
+                          
+                    },
+                    }
+                }
+            }
+        },
+        404:{
+            description:"user  not found"
+        }
+    } 
+}
 
 
 const userRouteDoc = {
@@ -79,6 +136,10 @@ const userRouteDoc = {
     },
     "/api/user/getUsers": {
         get : getUsers    
+    },
+
+    "/api/user/getUser": {
+        get : getUser   
     }
 };
 export default userRouteDoc;
