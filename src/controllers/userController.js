@@ -6,7 +6,7 @@ class userController {
   static async createUser(req, res) {
 
           try {
-            console.log("File",req.file)
+            // console.log("File",req.file)
             const result = await cloudinary.uploader.upload(req.file.path);
             const user = new User({
               fname: req.body.fname,
@@ -46,20 +46,26 @@ class userController {
   }
 
   // get one user
-  static async getUser(req, res) {
+  static async getUser(req,res) {
     try {
-      const user = await User.findOne({id: req.params.id });
+      const user=await User.findOne({id:req.params.id});
+      console.log(user);
+     
       res.status(200).json({
-        status: "Success",
-        data: user,
-      });
-    } catch (error) {
-      res.status(404).json({
-        status: "error",
-        message: error.message,
-      });
-    }
-  }
+        "status":
+        "success",
+        "data":user
+        
+      })
+    }catch (error){
+        res.status(404).json({
+            "status":"error",
+            "message":error.message
+        });
+   }
+
+}
+
 
   ///delete user  
 

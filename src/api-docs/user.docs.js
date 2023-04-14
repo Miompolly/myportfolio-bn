@@ -91,7 +91,8 @@ const getUser = {
     parameters :[
         {
            name : "id",
-           in : " path",
+           in : "path",
+           required :true,
            description :"User Id",
            type : "string",
            example : "643003974919a0c5cb54b793"
@@ -101,7 +102,7 @@ const getUser = {
     ] ,
     responses : {
         200 : {
-            description : "OK",
+            description : "User Object",
             content : {
                 "Application/json" : {
                     schema : {
@@ -138,7 +139,7 @@ const userRouteDoc = {
         get : getUsers    
     },
 
-    "/api/user/getUser": {
+    "/api/user/getUser/{id}": {
         get : getUser   
     }
 };
