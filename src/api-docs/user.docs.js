@@ -28,7 +28,7 @@ const createUser = {
                 example: "User123",
               },
               profileImage: {
-                type: "string",
+                type: "array",
                 items :{
                   type:"string",
                   format :"binary"
