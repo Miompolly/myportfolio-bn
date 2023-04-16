@@ -1,16 +1,14 @@
-import multer from 'multer';
-import path from 'path';
+import multer from "multer";
+import storage from "./cloudinary";
 
-const upload = multer({
-  storage: multer.diskStorage({}),
-  fileFilter: (req, file, cb) => {
-    const extension = path.extname(file.originalname);
-    if (!extension.match(/\.jpg|\.jpeg|\.png|\.PNG$/)) {
-      cb(new Error('Unsupported file format'));
-      return;
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype==="image/jpeg" || file.mimetype==="image/png" || file.mimetype==="image/webp"){
+        cb(null,true);
+    }else{
+        cb({message:"file format not supported"},false);
     }
-    cb(null, true);
-  },
-});
+  };
+const upload=multer({storage,fileFilter});
+
 
 export default upload;

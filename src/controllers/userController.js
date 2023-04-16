@@ -1,26 +1,32 @@
 import User from "../models/userModel";
-import upload from "../uploader/multer";
 import cloudinary from "../uploader/cloudinary";
 
 class userController {
   static async createUser(req, res) {
     try {
       // Check if file exists in the request
-      if (!req.file) {
-        return res.status(400).json({
-          status: "error",
-          message: "Missing required parameter - file"
-        });
-      }
+      // if (!req.files) {
+      //   return res.status(400).json({
+      //     status: "error",
+      //     message: "Missing required parameter - file"
+      //   });
+      // }
 
-      const result = await cloudinary.uploader.upload(req.file.path);
-      const user = new User({
+      // const result = await cloudinary.uploader.upload(req.file.path);
+      // console.log(result)
+
+      const profileImage = req.file.path;
+
+      console.log(req.body)
+      const user =await new User({
         fname: req.body.fname,
         lname: req.body.lname,
         email: req.body.email,
         password: req.body.password,
-        profileImage: result.secure_url,
+        profileImage
       });
+
+     
       await user.save();
       res.status(201).json({
         status: "success",
@@ -72,7 +78,8 @@ class userController {
 
 static async deleteUser(req, res) {
   try {
-    const user = await User.findOneAndDelete({ _id: req.params.id });
+    const user = await User.findOneAndDelete(req.params.id );
+    console.log(req.user);
     res.status(204).json({
       "status" :"Success",
       "message" :"User Deleted Succefully"
