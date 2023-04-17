@@ -30,3 +30,5 @@ app.use("/",(req,res)=>{
 
 dbConnect();
 
+export default app;
+
