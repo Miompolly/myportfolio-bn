@@ -8,21 +8,31 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    runs-on: ${{matrix.os}}
     strategy:
       matrix:
-        node-version: [19.8.1]
-       
+        os: [ubuntu-latest]
+        node-version: [16.x]
+    env: 
+      MONGODB_URL: ${{secrets.MONGODB_URL}}
+      PORT: ${{secrets.PORT}}
+      CLOUD_NAME: ${{secrets.CLOUD_NAME}}
+      CLOUDINARY_API_KEY: ${{secrets.CLOUDINARY_API_KEY}}
+      CLOUDINARY_API_SECRET: ${{secrets.CLOUDINARY_API_SECRET}}
+  
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
+
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - name: Upload coverage to code climate
+    if: always()
+    env:
+      CC_TEST_REPORTER_ID: ${{secrets.CODECLIMATE_TEST_REPORTER_ID}}
     - run: npm run dev

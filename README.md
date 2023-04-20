@@ -1,1 +1,2 @@
-# myportfolio-bn
+<a href="https://codeclimate.com/github/Miompolly/myportfolio-bn/maintainability"><img src="https://api.codeclimate.com/v1/badges/4005df9639e10fdbf948/maintainability" /></a>
+<a href="https://codeclimate.com/github/Miompolly/myportfolio-bn/test_coverage"><img src="https://api.codeclimate.com/v1/badges/4005df9639e10fdbf948/test_coverage" /></a>

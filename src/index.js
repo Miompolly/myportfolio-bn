@@ -17,9 +17,10 @@ app.use(express.json());
 app.use("/api",indexRouter);
 
 dotenv.config();
-swaggerDocs(app); 
+
 const port=process.env.PORT ? process.env.PORT:3000;
 app.listen(port,()=>{
+    dbConnect();
     console.log(`App is listening on port : ${port}`)
 })
 
@@ -28,7 +29,7 @@ app.use("/",(req,res)=>{
     res.send("Welcome to my portfolio");
 })
 
-dbConnect();
 
+swaggerDocs(app); 
 export default app;
 

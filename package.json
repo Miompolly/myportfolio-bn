@@ -7,7 +7,8 @@
     "build": "babel src -d dist ",
     "start": "node dist/index.js",
     "dev": "nodemon --exec babel-node src/index.js",
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles --runInBand --coverage --testTimeout 100000 --forceExit --verbose",
+    "kill": "sudo kill -9 $(sudo lsof -t -i :5001)"
   },
   "author": "Miompolly",
   "license": "ISC",
