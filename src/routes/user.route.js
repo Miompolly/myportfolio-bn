@@ -5,8 +5,8 @@ import multer from "multer";
 const upload=multer();
 import uploadImages from "../uploader/uploadImages";
 
-
-userRouter.post("/createUser", uploadImages("profileImage"), userController.createUser);
+uploadImages("profileImage"), 
+userRouter.post("/createUser", userController.createUser);
 userRouter.get("/getUsers/",userController.getUsers);
 userRouter.get("/getUser/:id",userController.getUser);
 userRouter.delete("/delete/:id",userController.deleteUser);

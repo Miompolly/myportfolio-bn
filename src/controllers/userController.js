@@ -15,7 +15,7 @@ class userController {
       // const result = await cloudinary.uploader.upload(req.file.path);
       // console.log(result)
 
-      const profileImage = req.file.path;
+      // const profileImage = req.file.path;
 
       console.log(req.body)
       const user =await new User({
@@ -23,7 +23,7 @@ class userController {
         lname: req.body.lname,
         email: req.body.email,
         password: req.body.password,
-        profileImage
+        // profileImage
       });
 
      
