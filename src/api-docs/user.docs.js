@@ -127,34 +127,46 @@ const getUser = {
 // delete user
 
 const deleteUser = {
-    tags:['Users'],
-    description:"Delete the User by Id",
-    parameters:[
-        {
-            name:"Id",
-            in:"path",
-            description:"Id of User",
-            type:"string",
-            required:true,
-            example:"643003974919a0c5cb54b793"
-        }
-    ],
-
-    responses:{
-        200:{
-            description:"OK",
-            content:{
-                 "application/json":{
-                    type:'object',
-                    example:{
-                        status:"success",
-                        data:[]
-                    }
-                 }
-            }
-        }
+  tags: ['Users'],
+  description: 'Delete the User by Id',
+  parameters: [
+    {
+      name: 'Id',
+      in: 'path',
+      description: 'Id of User',
+      type: 'string',
+      required: true,
+      example: '6140b2f4b4e4ad0d7c62382a'
     }
-}
+  ],
+
+  responses: {
+    200: {
+      description: 'OK',
+      content: {
+        'application/json': {
+          type: 'object',
+          example: {
+            status: 'success',
+            data: {}
+          }
+        }
+      }
+    },
+    404: {
+      description: 'User not found',
+      content: {
+        'application/json': {
+          type: 'object',
+          example: {
+            status: 'error',
+            message: 'User not found'
+          }
+        }
+      }
+    }
+  }
+};
 
 
 

@@ -15,7 +15,7 @@ class userController {
       // const result = await cloudinary.uploader.upload(req.file.path);
       // console.log(result)
 
-      const profileImage = req.file.path;
+      // const profileImage = req.file.path;
 
       console.log(req.body)
       const user =await new User({
@@ -23,7 +23,7 @@ class userController {
         lname: req.body.lname,
         email: req.body.email,
         password: req.body.password,
-        profileImage
+        // profileImage
       });
 
      
@@ -79,15 +79,25 @@ class userController {
 static async deleteUser(req, res) {
   try {
     const user = await User.findOneAndDelete(req.params.id );
-    console.log(req.user);
-    res.status(204).json({
-      "status" :"Success",
-      "message" :"User Deleted Succefully"
+
+    if (!user) {
+      // User not found
+      return res.status(404).json({
+        status: 'error',
+        message: 'User not found'
+      });
+    }
+
+    // User successfully deleted
+    return res.status(204).json({
+      status: 'success',
+      message: 'User deleted'
     });
   } catch (error) {
-    res.status(404).json({
+    // Generic error message for server-side errors
+    return res.status(500).json({
       status: 'error',
-      message: error.message,
+      message: 'An error occurred while deleting the user'
     });
   }
 }
