@@ -14,6 +14,7 @@ const app=express();
 app.use(cors({origin:'*',methods:['GET','POST','DELETE','UPDATE','PUT','PUT','PATCH']}));
 
 app.use(express.json());
+swaggerDocs(app); 
 app.use("/api",indexRouter);
 
 dotenv.config();
@@ -30,6 +31,6 @@ app.use("/",(req,res)=>{
 })
 
 
-swaggerDocs(app); 
+
 export default app;
 
