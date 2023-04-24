@@ -32,7 +32,7 @@ class userController {
         status: "success",
         data: user,
       });
-      console.log("User created");
+      console.log("User created successfull");
     } catch (error) {
       res.status(400).json({
         status: "error",
@@ -79,15 +79,25 @@ class userController {
 static async deleteUser(req, res) {
   try {
     const user = await User.findOneAndDelete(req.params.id );
-    console.log(req.user);
-    res.status(204).json({
-      "status" :"Success",
-      "message" :"User Deleted Succefully"
+
+    if (!user) {
+      // User not found
+      return res.status(404).json({
+        status: 'error',
+        message: 'User not found'
+      });
+    }
+
+    // User successfully deleted
+    return res.status(204).json({
+      status: 'success',
+      message: 'User deleted'
     });
   } catch (error) {
-    res.status(404).json({
+    // Generic error message for server-side errors
+    return res.status(500).json({
       status: 'error',
-      message: error.message,
+      message: 'An error occurred while deleting the user'
     });
   }
 }

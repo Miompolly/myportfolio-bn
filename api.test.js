@@ -42,3 +42,14 @@ describe('test get', function(){
     expect(response.statusCode).toBe(200);
   });
 });
+
+describe('test delete', function(){
+  it('delete user', async()=> {
+    const response = await request(app)
+      .get(`/api/user/deleteUser/${id}`);
+
+    expect(response.statusCode).toBe(200);
+  });
+});
+
+
