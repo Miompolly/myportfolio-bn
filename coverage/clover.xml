@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1682236978075" clover="3.2.0">
-  <project timestamp="1682236978076" name="All files">
+<coverage generated="1682341290647" clover="3.2.0">
+  <project timestamp="1682341290648" name="All files">
     <metrics statements="80" coveredstatements="60" conditionals="11" coveredconditionals="1" methods="12" coveredmethods="7" elements="103" coveredelements="68" complexity="0" loc="80" ncloc="80" packages="7" files="11" classes="11"/>
     <package name="src">
       <metrics statements="17" coveredstatements="17" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
@@ -88,7 +88,7 @@
       <file name="userModel.js" path="/home/miompolly/Documents/myportfolio-bn/src/models/userModel.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.routes">

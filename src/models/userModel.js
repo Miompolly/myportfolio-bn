@@ -23,6 +23,7 @@ const userSchema=mongoose.Schema({
         default:"user"
     },
     
+      // const profileImage = req.file.path;
 },
 {timestamps:true})
 
