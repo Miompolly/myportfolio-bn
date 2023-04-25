@@ -4,17 +4,7 @@ import cloudinary from "../uploader/cloudinary";
 class userController {
   static async createUser(req, res) {
     try {
-      // Check if file exists in the request
-      // if (!req.files) {
-      //   return res.status(400).json({
-      //     status: "error",
-      //     message: "Missing required parameter - file"
-      //   });
-      // }
-
-      // const result = await cloudinary.uploader.upload(req.file.path);
-      // console.log(result)
-
+   
       // const profileImage = req.file.path;
 
       console.log(req.body)
@@ -32,7 +22,7 @@ class userController {
         status: "success",
         data: user,
       });
-      console.log("User created successfull");
+      // console.log("User created successfull");
     } catch (error) {
       res.status(400).json({
         status: "error",
@@ -60,7 +50,7 @@ class userController {
   // get one user
  static async getUser(req, res) {
   try {
-    const user = await User.findOne({ _id: req.params.id });
+    const user = await User.findOne({ id: req.params.id });
     console.log(user);
 
     res.status(200).json({
@@ -102,7 +92,52 @@ static async deleteUser(req, res) {
   }
 }
 
+static async loginUser(req, res) {
+  try {
+    const email = req.body.email;
+    const password = req.body.password;
 
+    // Check if email and password were provided
+    if (!email || !password) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'Please provide an email and password',
+      });
+    }
+
+    // Find user by email
+    const user = await User.findOne({ email });
+
+    // Check if user exists
+    if (!user) {
+      return res.status(401).json({
+        status: 'error',
+        message: 'Incorrect email or password',
+      });
+    }
+
+    // Check if password is correct
+    if (user.password !== password) {
+      return res.status(401).json({
+        status: 'error',
+        message: 'Incorrect email or password',
+      
+      });
+      
+    }
+
+    // Login successful
+    res.status(200).json({
+      status: 'success',
+      data: user,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: 'error',
+      message: error.message,
+    });
+  }
+}
 
 }
 

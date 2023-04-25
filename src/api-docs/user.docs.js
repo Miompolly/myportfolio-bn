@@ -168,6 +168,50 @@ const deleteUser = {
   }
 };
 
+  //logging in a user 
+  const login = {
+    tags:["Users"],
+    description: "Login user",
+    requestBody:{
+        content:{
+            "Application/json":{
+                schema:{
+                    type:"object",
+                    properties:{
+                        email:{
+                            type:"email",
+                            description:"email of the user",
+                            example:"jojo@gmail.com"
+                        },
+                        password:{
+                            type:"string",
+                            description:"password of the user",
+                            example:"test123",
+                        },
+                        
+                    },
+                },
+            },
+  
+        },
+    },
+  responses:{
+        200:{
+            description:"OK",
+            content:{
+                "application/json":{
+                    schema:{
+                        type:"object",
+  
+                    },
+                },
+            },
+        },
+    },
+  
+  
+  };
+
 
 
 const userRouteDoc = {
@@ -183,6 +227,10 @@ const userRouteDoc = {
     },
     "/api/user/deleteUser/{id}": {
         delete:deleteUser
-    }
+    },
+
+    "/api/user/loginUser": {
+      post:login  
+  }
 };
 export default userRouteDoc;
