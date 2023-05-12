@@ -1,1 +1,17 @@
 # myportfolio-bn
+THIS MARKDOWM OF MY PORTFOLIO BN
+
+<a href="https://codeclimate.com/github/Miompolly/myportfolio-bn/maintainability"><img src="https://api.codeclimate.com/v1/badges/4005df9639e10fdbf948/maintainability" /></a>
+
+[![.github/workflows/ci.yml](https://github.com/Miompolly/myportfolio-bn/actions/workflows/ci.yml/badge.svg)](https://github.com/Miompolly/myportfolio-bn/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/Miompolly/myportfolio-bn/branch/main/graph/badge.svg?token=FA3BWKTXHK)](https://codecov.io/gh/Miompolly/myportfolio-bn)
+
+
+
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4005df9639e10fdbf948/test_coverage)](https://codeclimate.com/github/Miompolly/myportfolio-bn/f36b77085180ec8aead25eef45f63729c45cb4d0552c39ce487609b500b1a8f6/test_coverage)
+
+
+
+![Sunburst Graph](https://codecov.io/gh/Miompolly/myportfolio-bn/branch/main/graphs/sunburst.svg?token=FA3BWKTXHK)
+
+

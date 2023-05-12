@@ -47,11 +47,15 @@ class userController {
     }
   }
 
-  // get one user
- static async getUser(req, res) {
+
+static async getUser(req, res) {
   try {
-    const user = await User.findOne({ id: req.params.id });
+    const user = await User.findOne({ _id: req.params.id });
     console.log(user);
+
+    if (!user) {
+      throw new Error('User not found');
+    }
 
     res.status(200).json({
       status: 'success',

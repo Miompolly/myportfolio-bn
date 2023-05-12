@@ -1,6 +1,7 @@
 
 const request = require('supertest');
 import app from './src';
+import User from './src/models/userModel';
 
 let id;
  describe('create user',function(){
@@ -38,17 +39,30 @@ let id;
 
 
 
-
-describe('test get', function(){
-  it('Get users', async()=> {
+ describe('test get', function() {
+  it('Get users', async () => {
     const response = await request(app)
       .get('/api/user/getUsers');
 
     expect(response.statusCode).toBe(200);
   });
-  
-});
 
+  it('should handle errors when retrieving users', async () => {
+    // Mock an error by causing the controller function to throw an exception
+    jest.spyOn(User, 'find').mockImplementation(() => {
+      throw new Error('Error retrieving users');
+    });
+
+    const response = await request(app)
+      .get('/api/user/getUsers');
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toEqual({
+      status: 'error',
+      message: 'Error retrieving users',
+    });
+  });
+});
 
 describe('test get', function(){
   it('Get user', async()=> {
@@ -57,6 +71,24 @@ describe('test get', function(){
 
     expect(response.statusCode).toBe(200);
   });
+
+it('should handle errors when retrieving users', async () => {
+    // Mock an error by causing the controller function to throw an exception
+    jest.spyOn(User, 'find').mockImplementation(() => {
+      throw new Error('Error retrieving users');
+    });
+
+    const response = await request(app)
+      .get('/api/user/getUsers');
+
+    expect(response.statusCode).toBe(404);
+    expect(response.body).toEqual({
+      status: 'error',
+      message: 'Error retrieving users',
+    });
+  });
+
+
 });
 
 describe('test delete', function() {
