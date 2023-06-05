@@ -2,6 +2,7 @@ import swaggerUi from "swagger-ui-express";
 import swaggerJSDoc from "swagger-jsdoc";
 import dotenv from "dotenv";
 import userRouteDoc from "./user.docs";
+import blogRouteDoc from "./blogDocs";
 
 dotenv.config();
 
@@ -27,6 +28,11 @@ const options = {
                 name:"Users",description:"User routes"
                 
             }
+            ,
+            {
+                name:"Blogs",description:"Blogs routes"
+                
+            }
         ],
         components : {
             securitySchemes : {
@@ -40,7 +46,8 @@ const options = {
             }
         }, 
         paths : {
-...userRouteDoc
+...userRouteDoc,
+...blogRouteDoc,
         }
 
     },

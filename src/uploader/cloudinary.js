@@ -12,7 +12,7 @@ cloudinary.config({
 });
 
 const storage= new cloudinaryStorage({
-    cloudinary,params:{folder:"ProfileImage"}
+    cloudinary,params:{folder:"blogImage"}
 });
 
 export default storage ;

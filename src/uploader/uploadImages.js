@@ -1,11 +1,9 @@
-
 import upload from "./multer";
 
 const uploadImages = (name) => {
   return async (req, res, next) => {
     try {
-      upload.single(name)(req, res, (err) => {
-        // upload.array
+      upload.array(name)(req, res, (err) => {
         if (err) {
           return res.status(400).json({ status: "fail", error: err.message });
         }
@@ -13,7 +11,7 @@ const uploadImages = (name) => {
         next();
       });
     } catch (error) {
-      return error.message;
+      return res.status(500).json({ status: "error", error: error.message });
     }
   };
 };

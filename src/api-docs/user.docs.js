@@ -26,18 +26,19 @@ const createUser = {
                 type: "string",
                 description: "Password",
                 example: "User123",
-              },
-              profileImage: {
-                type: "array",
-                items :{
-                  type:"string",
-                  format :"binary"
-                }
+              }
+              // ,
+              // profileImage: {
+              //   type: "array",
+              //   items :{
+              //     type:"string",
+              //     format :"binary"
+              //   }
                 
                 // Add the "name" attribute to identify the file input element in the request
                 // Make sure that the "name" attribute matches the parameter name used in your Node.js code
                 // name: "profileImage",
-              },
+              // },
             },
           },
         },
